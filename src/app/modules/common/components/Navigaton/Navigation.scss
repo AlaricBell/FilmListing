@@ -1,0 +1,39 @@
+@import '../../../common/styles/utils/variables.scss';
+
+.nav {
+    &-container {
+        width: 100%;
+        display: flex;
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 65px;
+        text-align: center;
+        background-color: $color-primary;
+        color: $color-highlight;
+        transition: background-color .6s ease-out, color .6s ease-out;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        &.active {
+            background-color: $color-highlight;
+            color: $color-primary;
+        }
+    }
+
+    &-link {
+        flex-grow: 1;
+
+        &:visited {
+            color: $color-highlight;
+        }
+
+        &.active:visited {
+            color: $color-primary;
+        }
+    }
+}

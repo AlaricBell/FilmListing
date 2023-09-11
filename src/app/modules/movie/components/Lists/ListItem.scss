@@ -1,0 +1,64 @@
+@import '../../../common/styles/utils/variables.scss';
+
+.list {
+    &-item {
+        padding: 1.25rem;
+        border-bottom: 1px solid $color-highlight;
+        font-weight: 700;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    &-info {
+
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &-action {
+        padding-left: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            color: lighten($color-highlight, 15%);
+        }
+    }
+
+    &-title {
+        margin-right: .5rem;
+
+        &-edit {
+            margin-right: .75rem;
+        }
+    }
+
+    &-restriction {
+        background-color: $color-highlight;
+        color: $color-primary;
+        padding: 0 .25rem;
+        font-weight: 700;
+
+        &-edit {
+            min-width: 52px;
+        }
+    }
+
+    &-description {
+        font-weight: 200;
+        font-size: 1rem;
+        font-style: italic;
+
+        &-edit {
+        }
+    }
+}
