@@ -29,8 +29,8 @@ const ListItem = ({movie, index}: ListProps) => {
 
     const handleEdit = useCallback(() => {
         if(!isEdit) {
-            setIsEdit()
             setSelectedMovieIndex(index)
+            setIsEdit()
         }
     }, [currentMovie, isEdit])
 
@@ -46,7 +46,7 @@ const ListItem = ({movie, index}: ListProps) => {
             setIsOpen();
             setModalContent(`Are you sure, you want to delete '${movie.title}'?`)
         }
-    }, [currentMovie, isEdit])
+    }, [currentMovie, isEdit, movie])
 
     const isActive = useMemo(() => isEdit && index === selectedMovieIndex, [selectedMovieIndex, isEdit])
     const isFiltered = useMemo(() => filter === Number.MAX_SAFE_INTEGER || filter === movie.ageRestriction, [movie, filter])
