@@ -8,7 +8,6 @@ import ListFilter from './ListFilter';
 
 const ListContainer = () => {
     const movies = useMovieStore((state) => state.movies)
-    const filter = useMovieStore((state) => state.filter)
     return (
       <>
         <ListFilter />

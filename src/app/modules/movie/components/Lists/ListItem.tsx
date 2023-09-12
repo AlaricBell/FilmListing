@@ -44,7 +44,7 @@ const ListItem = ({movie, index}: ListProps) => {
             setSelectedMovieIndex(index)
             setModalAction((deleteMovie))
             setIsOpen();
-            setModalContent(`Are you sure, you want to delete ${movie.title}?`)
+            setModalContent(`Are you sure, you want to delete '${movie.title}'?`)
         }
     }, [currentMovie, isEdit])
 
