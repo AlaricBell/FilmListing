@@ -1,10 +1,10 @@
-import ListContainer from '../modules/movie/components/Lists/ListContainer'
+import AddMovie from '../modules/movie/components/Forms/AddMovie'
 
 export default function Home() {
   return (
     <>
       <main>
-        <ListContainer/>
+        <AddMovie/>
       </main>
     </>
   )

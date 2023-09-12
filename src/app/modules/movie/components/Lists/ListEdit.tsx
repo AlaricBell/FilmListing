@@ -1,6 +1,6 @@
 import "./ListItem.scss"
 import { MovieProps } from "../../types/MovieTypes";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { produce } from "immer";
 import { AgeRestriction } from "../../enums/restrictionEnum";
 
@@ -28,6 +28,8 @@ const ListEdit = ({currentMovie, setCurrentMovie}: EditProps) => {
     <div className="list-info">
         <div className="list-header">
             <input className="list-title-edit" type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+            {/* NOTE: Should be in a custom dropdown component instead */}
+            {/* TODO: Stop being lazy */}
             <select value={ageRestriction} name="" className="list-restriction-edit" onChange={e => setRestriction(Number(e.target.value))}>
                 <option value={AgeRestriction.GeneralAudience}>{AgeRestriction.GeneralAudience}</option>
                 <option value={AgeRestriction.ParentalGuidence}>{AgeRestriction.ParentalGuidence}</option>

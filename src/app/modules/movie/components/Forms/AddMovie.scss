@@ -1,0 +1,44 @@
+@import '../../../common/styles/utils/variables.scss';
+
+.form {
+    &-container {
+        margin-top: 4rem;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-btn {
+        padding: .5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background-color: $color-highlight;
+        color: $color-primary;
+    }
+
+    &-title,
+    &-restriction {
+        width: 38vw;
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+
+    &-description,
+    &-btn,
+    &-group {
+        width: 80vw;
+    }
+
+    &-description {
+        margin: 1.5rem 0;
+        min-height: 40vh;
+        font-size: 1.5rem;
+    }
+}

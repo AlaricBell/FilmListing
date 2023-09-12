@@ -31,7 +31,8 @@ a {
 
 input,
 select,
-option {
+option,
+textarea {
     border: none;
     outline: none;
     background-color: lighten($color-primary, 10%);
