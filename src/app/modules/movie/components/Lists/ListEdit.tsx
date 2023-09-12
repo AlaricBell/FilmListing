@@ -1,26 +1,38 @@
 import "./ListItem.scss"
 import { MovieProps } from "../../types/MovieTypes";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { produce } from "immer";
+import { AgeRestriction } from "../../enums/restrictionEnum";
 
-type ListProps = {
-    movie: MovieProps
-    setMovies: (movies: MovieProps[]) => void
+type EditProps = {
+    currentMovie: MovieProps
+    setCurrentMovie: (movie: MovieProps) => void
 }
 
-const ListEdit = ({movie, setMovies}: ListProps) => {
-    const [title, setTitle] = useState<string>(movie.title)
-    const [description, setDescription] = useState<string>(movie.description)
-    const [restriction, setRestriction] = useState<number>(movie.ageRestriction)
+const ListEdit = ({currentMovie, setCurrentMovie}: EditProps) => {
+  const {title, description, ageRestriction} = currentMovie
+
+  const setTitle = useCallback((title: string) => setCurrentMovie(produce(currentMovie, draft => {
+      draft.title = title
+  })), [])
+
+    const setDescription = useCallback((description: string) => setCurrentMovie(produce(currentMovie, draft => {
+      draft.description = description
+  })), [])
+
+    const setRestriction = useCallback((restriction: number) => setCurrentMovie(produce(currentMovie, draft => {
+      draft.ageRestriction = restriction
+  })), [])
 
   return (
     <div className="list-info">
         <div className="list-header">
             <input className="list-title-edit" type="text" value={title} onChange={e => setTitle(e.target.value)}/>
-            <select value={restriction} name="" className="list-restriction-edit" onChange={e => setRestriction(Number(e.target.value))}>
-                <option value={18} selected={restriction === 18}>18</option>
-                <option value={16} selected={restriction === 16}>16</option>
-                <option value={12} selected={restriction === 12}>12</option>
-                <option value={6} selected={restriction === 6}>6</option>
+            <select value={ageRestriction} name="" className="list-restriction-edit" onChange={e => setRestriction(Number(e.target.value))}>
+                <option value={AgeRestriction.GeneralAudience}>{AgeRestriction.GeneralAudience}</option>
+                <option value={AgeRestriction.ParentalGuidence}>{AgeRestriction.ParentalGuidence}</option>
+                <option value={AgeRestriction.SafeForKids}>{AgeRestriction.SafeForKids}</option>
+                <option value={AgeRestriction.AdultsOnly}>{AgeRestriction.AdultsOnly}</option>
             </select>
         </div>
         <input className="list-description-edit" type="text" value={description}  onChange={e => setDescription(e.target.value)}/>

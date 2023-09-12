@@ -1,6 +1,10 @@
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300&display=swap');
 @import '../utils/variables.scss';
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-family: 'Roboto', sans-serif;
 }
@@ -30,7 +34,12 @@ select,
 option {
     border: none;
     outline: none;
-    background-color: lighten($color-primary, 15%);
+    background-color: lighten($color-primary, 10%);
     color: $color-highlight;
     font-weight: 500;
+}
+
+button {
+    border: none;
+    outline: none;
 }

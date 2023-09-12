@@ -3,22 +3,14 @@
 import './ListContainer.scss';
 import ListItem from "./ListItem";
 import { MovieProps } from "../../types/MovieTypes";
-import { useState } from "react";
+import { useMovieStore } from '@/app/store/movieStore';
 
 const ListContainer = () => {
-    const [movies, setMovies] = useState([
-        {title: "The Witcher", description: "Season 1 was ok", ageRestriction: 12},
-        {title: "The Witcher", description: "Season 1 was ok", ageRestriction: 12},
-        {title: "The Witcher", description: "Season 1 was ok", ageRestriction: 12},
-        {title: "The Witcher", description: "Season 1 was ok", ageRestriction: 12},
-      ])
-      
+    const movies = useMovieStore((state) => state.movies)
     return (
-      <>
-          <ul className="list-container">
-            {movies.map((item: MovieProps, index: number) => <ListItem movie={item} setMovies={setMovies} key={index}/>)}
-          </ul>
-      </>
+      <ul className="list-container">
+        {movies.map((item: MovieProps, index: number) => <ListItem movie={item} key={index} index={index}/>)}
+      </ul>
     );
   };
   

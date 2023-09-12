@@ -30,7 +30,11 @@
         cursor: pointer;
 
         &:hover {
-            color: lighten($color-highlight, 15%);
+            color: lighten($color-highlight, 10%);
+        }
+
+        &.disabled {
+            color: darken($color-highlight, 15%);
         }
     }
 

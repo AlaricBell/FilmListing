@@ -14,7 +14,7 @@ const ListInfo = ({movie}: ListProps) => {
     <div className="list-info">
         <div className="list-header">
             <span className="list-title">{movie.title}</span>
-            <span className="list-restriction">{movie.ageRestriction}</span>
+            <span className="list-restriction">{movie.ageRestriction}+</span>
         </div>
         <span className="list-description">{movie.description}</span>
     </div>
