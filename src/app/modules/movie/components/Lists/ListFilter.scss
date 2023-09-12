@@ -1,0 +1,28 @@
+@import '../../../common/styles/utils/variables.scss';
+
+.filter {
+    max-width: 1200px;
+    display: flex;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    &-item {
+        flex-grow: 1;
+        border: 1px solid $color-highlight;
+        padding: .75rem;
+        text-align: center;
+        cursor: pointer;
+        transition: color .2s linear, background-color .2s linear;
+
+        &.active {
+            background-color: $color-highlight;
+            color: $color-primary;
+        }
+
+        &:hover {
+            background-color: darken($color-highlight, 10%);
+            color: $color-primary;
+        }
+    }
+}

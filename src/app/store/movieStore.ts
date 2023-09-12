@@ -7,6 +7,8 @@ interface MovieState {
   movies: MovieProps[]
   selectedMovieIndex: number
   isEdit: boolean
+  filter: number
+  setFilter: (filter: number) => void
   setIsEdit: () => void
   setSelectedMovieIndex: (index: number) => void
   setMovie: (movie: MovieProps) => void
@@ -16,13 +18,15 @@ interface MovieState {
 
 export const useMovieStore = create<MovieState>()((set) => ({
   movies: [
-    {title: "The Witcher Season 1", description: "Season 1 was ok", ageRestriction: AgeRestriction.SafeForKids},
+    {title: "The Witcher Season 1", description: "Season 1 was ok", ageRestriction: AgeRestriction.ParentalGuidence},
     {title: "The Witcher Season 2", description: "Season 2 wasn't ok", ageRestriction: AgeRestriction.SafeForKids},
     {title: "The Witcher Season 3", description: "Geralt appears a few times", ageRestriction: AgeRestriction.SafeForKids},
-    {title: "The Witcher Season 4", description: "Made me unsub", ageRestriction: AgeRestriction.SafeForKids},
+    {title: "The Witcher Season 4", description: "Made me unsub", ageRestriction: AgeRestriction.AdultsOnly},
   ],
   selectedMovieIndex: 0,
   isEdit: false,
+  filter: Number.MAX_SAFE_INTEGER,
+  setFilter: (filter) => set((state) => ({ filter: filter})),
   setIsEdit: () => set((state) => ({ isEdit: !state.isEdit})),
   setSelectedMovieIndex: (index) => set((state) => ({ selectedMovieIndex: index})),
   setMovie: (movie) => set((state) => ({ movies: produce(state.movies, draft => {

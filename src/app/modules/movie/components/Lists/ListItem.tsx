@@ -24,6 +24,7 @@ const ListItem = ({movie, index}: ListProps) => {
     const setModalContent = useModalStore((state) => state.setContent)
     const isEdit = useMovieStore((state) => state.isEdit)
     const setIsEdit = useMovieStore((state) => state.setIsEdit)
+    const filter = useMovieStore((state) => state.filter)
     const [currentMovie, setCurrentMovie] = useState<MovieProps>(movie)
 
     const handleEdit = useCallback(() => {
@@ -48,9 +49,9 @@ const ListItem = ({movie, index}: ListProps) => {
     }, [currentMovie, isEdit])
 
     const isActive = useMemo(() => isEdit && index === selectedMovieIndex, [selectedMovieIndex, isEdit])
+    const isFiltered = useMemo(() => filter === Number.MAX_SAFE_INTEGER || filter === movie.ageRestriction, [movie, filter])
 
-  return (
-    <>
+  return isFiltered ? (
         <li className="list-item">
             {isActive ? <ListEdit currentMovie={currentMovie} setCurrentMovie={setCurrentMovie}/> : <ListInfo movie={movie}/>}
             <div className="list-actions">
@@ -59,8 +60,7 @@ const ListItem = ({movie, index}: ListProps) => {
                 <div className={classNames({disabled: isEdit},"list-action")} onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /></div>
             </div>
         </li>
-    </>
-  );
+  ): null;
 };
 
 export default ListItem;
